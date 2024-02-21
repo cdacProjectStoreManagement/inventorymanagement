@@ -27,15 +27,24 @@ public class Store extends BaseEntity {
 	@Column(nullable=false,length=100)
 	private String storeName;
 
-	@OneToMany(mappedBy = "store" , cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ProductRequest> productRequest = new ArrayList<ProductRequest>();
+	@Column
+	private String locationAddress;
+	@Column
+	private String locationCity;
+	@Column
+	private String locationState;
+	@Column
+	private String locationCountry;
+	@Column
+	private String locationPincode;
 	
-	@ManyToOne(cascade = CascadeType.ALL , targetEntity = Location.class)
-	@JoinColumn(name = "location_id", nullable = false)
-	private Integer location;
+
 	
 	@OneToMany(mappedBy = "store" , cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<StoreInventory> storeInventory = new ArrayList<StoreInventory>();
+	
+	@OneToMany(mappedBy = "store" , cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ProductRequest> productRequest = new ArrayList<ProductRequest>();
 	
 	
 	@ManyToMany
@@ -45,6 +54,13 @@ public class Store extends BaseEntity {
 	
 	@OneToMany(mappedBy = "store", orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<Bill>bills  = new ArrayList<>();
+	
+	public void addInventory(StoreInventory storeInventory)
+	{
+		this.storeInventory.add(storeInventory);
+		storeInventory.setStore(this);
+	}
+	
 }
 
 

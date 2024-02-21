@@ -3,6 +3,7 @@ package com.app.entities;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,9 +28,7 @@ public class OrderEntity extends BaseEntity {
 
 	@Column(nullable=false)
 	private LocalDate orderDate;
-	private LocalDate expectedDate;
 	private LocalDate arrivedDate;
-	private boolean isComplete;
 	@Column(nullable=false)
 	private Double totalAmount;
 	
@@ -45,10 +44,11 @@ public class OrderEntity extends BaseEntity {
 	private Warehouse warehouse;
 	
 	
-	public void addOrederDetails(OrderDetail oerderDetail)
+	public void addOrderDetails(List<OrderDetail> orderDetails)
 	{
-		orderDetails.add(oerderDetail);
-		oerderDetail.setOrder(this);
+		this.orderDetails = orderDetails.stream()
+				.peek(orderDetail -> orderDetail.setOrder(this))
+	            .collect(Collectors.toList());
 	}
 	public void removeOrederDetails(OrderDetail oerderDetail)
 	{

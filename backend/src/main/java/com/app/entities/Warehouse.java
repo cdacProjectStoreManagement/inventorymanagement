@@ -25,29 +25,29 @@ public class Warehouse extends BaseEntity {
 
 	@Column(nullable=false,length=100)
 	private String warehouseName;
+	@Column
+	private String locationAddress;
+	@Column
+	private String locationCity;
+	@Column
+	private String locationState;
+	@Column
+	private String locationCountry;
+	@Column
+	private String locationPincode;
 	
-	@ManyToOne(cascade = CascadeType.ALL , targetEntity = Location.class)
-	@JoinColumn(name = "location_id", nullable = false)
-	private Location location;
 	
+	@OneToMany(mappedBy = "warehouse" , cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<WarehouseInventory> warehouseInventory = new ArrayList<WarehouseInventory>();
 
 	
 	@ManyToMany(mappedBy = "warehouses")
 	private List<Store> stores = new ArrayList<Store>();
 	
-	@OneToMany(mappedBy = "warehouse" , cascade = CascadeType.MERGE, orphanRemoval = true)
+	@OneToMany(mappedBy = "warehouse" , cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderEntity> orderList = new ArrayList<>();
 	
-	public void addOrder(OrderEntity orderEntity)
-	{
-		orderList.add(orderEntity);
-		orderEntity.setWarehouse(this);
-	}
-	public void removeOrder(OrderEntity orderEntity)
-	{
-		orderList.remove(orderEntity);
-		orderEntity.setWarehouse(null);
-	}
+	
 }
 
 
