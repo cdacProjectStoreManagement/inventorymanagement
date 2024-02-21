@@ -12,8 +12,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class StoreInventory extends BaseEntity{
+public class StoreInventory {
 
+
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	private Long id;
 	@Column(nullable = false)
 	private Integer quantity;
 	
@@ -31,8 +35,8 @@ public class StoreInventory extends BaseEntity{
 	
 	@OneToOne     //(cascade = CascadeType.ALL , targetEntity = Product.class)
 	@JoinColumn(name = "product_id", nullable = false)
-	@MapsId
+//	@MapsId
 	private Product product;
 	
-	
+
 }

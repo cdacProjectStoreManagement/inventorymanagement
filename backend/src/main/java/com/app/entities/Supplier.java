@@ -27,7 +27,7 @@ public class Supplier extends BaseEntity {
 //    	company varchar(100);	
 //		}
 	@Column(nullable=false,length=30)
-	private String suppilerName;
+	private String supplierName;
 	@Column(nullable=false,length=100)
 	private String supplierAddress;
 	@Column(nullable=false,length=10)

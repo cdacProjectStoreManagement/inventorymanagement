@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -51,6 +52,10 @@ public class Product extends BaseEntity {
 	
 	@OneToMany(mappedBy = "product" , cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<BillDetails> billDetails = new ArrayList<>();
+	
+	@OneToOne(mappedBy = "product")
+	private WarehouseInventory warehouseInventory;
+
 	
 }
 
