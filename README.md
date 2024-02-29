@@ -4,6 +4,6 @@ Our user-friendly project strives to revolutionize inventory management for busi
 <hr/>
 <h2>Usecase Diagram</h2>
 <img src="https://github.com/cdacProjectStoreManagement/store_inventory_management/assets/128993363/00c3c880-e3c0-43aa-836d-39adb77ea9ce">
-![usecase](https://github.com/cdacProjectStoreManagement/store_inventory_management/assets/128993363/00c3c880-e3c0-43aa-836d-39adb77ea9ce)
+
 
 
