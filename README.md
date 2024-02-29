@@ -4,6 +4,10 @@ Our user-friendly project strives to revolutionize inventory management for busi
 <hr/>
 <h2>Usecase Diagram</h2>
 <img src="https://github.com/cdacProjectStoreManagement/store_inventory_management/assets/128993363/00c3c880-e3c0-43aa-836d-39adb77ea9ce">
+<hr/>
+<h2>ER Diagram</h2>
+<img src="https://github.com/cdacProjectStoreManagement/store_inventory_management/assets/128993363/607c62e1-dd9c-4d77-b19b-0abdab2345e1">
+
 
 
 
