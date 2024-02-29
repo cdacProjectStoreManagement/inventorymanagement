@@ -1,8 +1,15 @@
 package com.app.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
@@ -16,18 +23,25 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class WarehouseInventory extends BaseEntity {
 
-	@Column(nullable = false)
-	private Integer quantity;
-	@Column(nullable = false)
-	private Integer minimumStockLevel;
-	@Column(nullable = false)
-	private Integer maximumStockLevel;
-	@Column(nullable = false)
-	private Integer reOrderLimit;
-	@OneToOne     //(cascade = CascadeType.ALL , targetEntity = Product.class)
-	@JoinColumn(name = "product_id", nullable = false)
-	@MapsId
-	private Product product;
+public class WarehouseInventory  {// extends BaseEntity {
+	
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	private Long id;
+	
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Warehouse.class)
+    @JoinColumn(name = "warehouse_id", nullable = false)
+    private Warehouse warehouse;
+    
+    
+    @OneToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
+    @Column(nullable = false)
+    private Integer quantity;
+    private Integer minimumStockLevel;    
+    private Integer maximumStockLevel;
+    private Integer reOrderLimit;
 }
