@@ -39,6 +39,7 @@ function Supplier() {
                   <th>Company</th>
                   <th>Address</th>
                   <th>Contact</th>
+                  <th>Experience</th>
                 </tr>
               </thead>
               <tbody>
@@ -62,6 +63,7 @@ function Supplier() {
                         <td>{supplier.company}</td>
                         <td>{supplier.supplierAddress}</td>
                         <td>{supplier.supplierContact}</td>
+                        <td></td>
                       </tr>
                     ))
                 )}
